@@ -1,0 +1,31 @@
+# ORM (Python: the Django ORM or SQLAlchemy)
+Object Relational Mapping - is a technique that lets you query and manupulate data from database using an object-oriented paradigm. Often referred to a library that implements ORM technique. It encapsulates the code needed to manipulate the data, so you don't use SQL anymore, you interact directly with an object in the same language you are using.
+    With ORM library the query to db looks like:
+        book_list = BookTable.query(author="Linus");
+        # "SELECT book FROM library WHERE author = 'Linus'";
++: You write your data model in only one place, and it's easier to update, maintain, and reuse the code.
+-: Performance is OK for usual queries, but a SQL master will always do better with his own SQL for big projects.
+
+
+# What is the purpose of a backref in SQLAlchemy?
+Backrefs are a way to define relationships that make them easier to define and/or use.
+Always add comments to the other model to indicate that the attribute exists.
+
+Unlike backrefs, back_populates does not create the opposite relationship on the related class.
+
+
+# Association table (often use combination of table names as BookGenre)
+Association table - the table that doesn’t have it’s own unique  primary keys, it contains primary keys from related tables. These keys called Foreign keys. Association table manage “many to many” type of relationship. No meaningful fields. Simply "the glue" between two tables. 
+
+
+# Middle table (ex. Comment)
+It has unique primary key. Connects two tables (ex. a book has many comments, a user has many comments, two "one-to-many" relationships). Have meaningful fields.
+
+
+# What is data normalization?
+It refers to the practice where every piece of information lives in exactly one place and relates directly to the key.
+It prevents repeating dependencies (storing a name and age of the person in different tables) and representing multiple data for the same category in columns (ex. emaill1, email2, emailN...)
+
+
+# What is referential integrity?
+The logical dependency of a foreign key on primary key between tables. You can't delete rows from the parent table before you delete rows from the child table. 
